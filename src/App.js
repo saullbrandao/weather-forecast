@@ -18,7 +18,14 @@ const App = () => {
     <div>
       <h1>Weather Forecast</h1>
       <DateTime />
-      <CurrentDayCard />
+      {Object.keys(weather).length === 0 ||
+        <CurrentDayCard
+          temperature={weather.current.temp}
+          weather={weather.current.weather[0].description}
+          humidity={weather.current.humidity}
+          windSpeed={weather.current.wind_speed}
+        />
+      }
     </div>
   );
 }

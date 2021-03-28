@@ -1,17 +1,17 @@
 import '../styles/currentDayCard.css'
 
-const CurrentDayCard = () => {
+const CurrentDayCard = ({ temperature, weather, humidity, windSpeed }) => {
     return (
         <div className="container">
-            <p id="temperature">🌨 {`25`}<sup>°C</sup> </p>
-            <p id="clouds">{`Cloudy`}</p>
+            <p id="temperature">{Math.floor(temperature)}<sup>°C</sup> </p>
+            <p id="weather">{weather}</p>
             <div id="humidity">
                 <p className="grey-text">Humidity</p>
-                <p>{`65%`}</p>
+                <p>{`${humidity}%`}</p>
             </div>
             <div id="wind">
                 <p className="grey-text">Wind Speed</p>
-                <p>{`19.2 km/h`}</p>
+                <p>{`${windSpeed} m/s`}</p>
             </div>
         </div>
     )
