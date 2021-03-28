@@ -1,4 +1,4 @@
-import '../styles/currentDayCard.css'
+import '../styles/CurrentDayCard.css'
 
 const CurrentWeatherCard = ({ temperature, weather, humidity, windSpeed }) => {
     return (

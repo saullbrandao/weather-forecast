@@ -1,12 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import { usePosition } from 'use-position'
-import CurrentWeatherCard from './components/CurrentWeatherCard'
-import DateTime from './components/DateTime'
-import weatherApi from './services/weatherApi'
+import CurrentWeatherCard from './CurrentWeatherCard'
+import DateTime from './DateTime'
+import LocationInput from './LocationInput'
+import geocodingApi from '../services/geocodingApi'
+import weatherApi from '../services/weatherApi'
+import '../styles/App.css'
 
 const App = () => {
   const [weather, setWeather] = useState({})
+  const [location, setLocation] = useState('London')
   const { latitude, longitude, error } = usePosition()
+
+  const handleLocationChange = (newLocation) => setLocation(newLocation)
+
+  const handleLocation = () => {
+    geocodingApi.get('geocode/v1/json', {
+      params: {
+        q: location
+      }
+    }).then(response => {
+      const { lat, lng } = response.data.results[0].geometry
+      handleWeather(lat, lng)
+    })
+  }
+
+  const handleButtonClick = () => handleLocation()
 
   const handleWeather = async (lat, lon) => {
     const response = await weatherApi.get('data/2.5/onecall', {
@@ -27,6 +46,12 @@ const App = () => {
   return (
     <div>
       <h1>Weather Forecast</h1>
+      <LocationInput
+        location={location}
+        handleLocationChange={handleLocationChange}
+        handleButtonClick={handleButtonClick}
+      />
+      <button onClick={handleButtonClick}>Submit</button>
       <DateTime />
       {Object.keys(weather).length === 0 ||
         <CurrentWeatherCard

@@ -1,4 +1,4 @@
-import '../styles/dateTime.css'
+import '../styles/DateTime.css'
 
 const DateTime = () => {
     return (
