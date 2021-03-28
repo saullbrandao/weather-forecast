@@ -1,6 +1,6 @@
 import '../styles/currentDayCard.css'
 
-const CurrentDayCard = ({ temperature, weather, humidity, windSpeed }) => {
+const CurrentWeatherCard = ({ temperature, weather, humidity, windSpeed }) => {
     return (
         <div className="container">
             <p id="temperature">{Math.floor(temperature)}<sup>°C</sup> </p>
@@ -17,4 +17,4 @@ const CurrentDayCard = ({ temperature, weather, humidity, windSpeed }) => {
     )
 }
 
-export default CurrentDayCard
+export default CurrentWeatherCard

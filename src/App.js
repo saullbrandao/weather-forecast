@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CurrentDayCard from './components/CurrentDayCard'
+import CurrentWeatherCard from './components/CurrentWeatherCard'
 import DateTime from './components/DateTime'
 import api from './services/api'
 
@@ -19,7 +19,7 @@ const App = () => {
       <h1>Weather Forecast</h1>
       <DateTime />
       {Object.keys(weather).length === 0 ||
-        <CurrentDayCard
+        <CurrentWeatherCard
           temperature={weather.current.temp}
           weather={weather.current.weather[0].description}
           humidity={weather.current.humidity}
