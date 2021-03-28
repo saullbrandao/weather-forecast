@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { usePosition } from 'use-position'
 import CurrentWeatherCard from './components/CurrentWeatherCard'
 import DateTime from './components/DateTime'
-import api from './services/api'
+import weatherApi from './services/weatherApi'
 
 const App = () => {
   const [weather, setWeather] = useState({})
@@ -10,13 +10,26 @@ const App = () => {
 
 
   useEffect(() => {
-    api.get('data/2.5/onecall', {
-      params: {
-        lon: -38.554790,
-        lat: -3.788670,
-      }
-    }).then(response => setWeather(response.data))
-  }, [])
+    if (latitude && longitude && !error) {
+      weatherApi.get('data/2.5/onecall', {
+        params: {
+          lat: latitude,
+          lon: longitude,
+        }
+      }).then(response => setWeather(response.data))
+    } else {
+      weatherApi.get('data/2.5/onecall', {
+        params: {
+          lat: 51.507351,
+          lon: -0.127758,
+        }
+      }).then(response => setWeather(response.data))
+    }
+
+
+
+
+  }, [latitude, longitude, error])
   return (
     <div>
       <h1>Weather Forecast</h1>

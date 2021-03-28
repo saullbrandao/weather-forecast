@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api = axios.create({
+const weatherApi = axios.create({
     baseURL: 'http://api.openweathermap.org',
     params: {
         units: 'metric',
@@ -9,4 +9,4 @@ const api = axios.create({
     }
 })
 
-export default api
+export default weatherApi
