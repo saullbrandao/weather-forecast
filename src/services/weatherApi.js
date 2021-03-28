@@ -5,7 +5,7 @@ const weatherApi = axios.create({
     params: {
         units: 'metric',
         exclude: 'minutely,hourly,alerts',
-        appid: process.env.REACT_APP_API_KEY
+        appid: process.env.REACT_APP_WEATHER_API_KEY
     }
 })
 

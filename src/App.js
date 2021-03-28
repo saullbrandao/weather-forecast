@@ -8,27 +8,21 @@ const App = () => {
   const [weather, setWeather] = useState({})
   const { latitude, longitude, error } = usePosition()
 
-
+  const handleWeather = async (lat, lon) => {
+    const response = await weatherApi.get('data/2.5/onecall', {
+      params: {
+        lat,
+        lon,
+      }
+    })
+    setWeather(response.data)
+  }
   useEffect(() => {
     if (latitude && longitude && !error) {
-      weatherApi.get('data/2.5/onecall', {
-        params: {
-          lat: latitude,
-          lon: longitude,
-        }
-      }).then(response => setWeather(response.data))
+      handleWeather(latitude, longitude)
     } else {
-      weatherApi.get('data/2.5/onecall', {
-        params: {
-          lat: 51.507351,
-          lon: -0.127758,
-        }
-      }).then(response => setWeather(response.data))
+      handleWeather(51.507351, -0.127758)
     }
-
-
-
-
   }, [latitude, longitude, error])
   return (
     <div>
