@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { usePosition } from 'use-position'
 import CurrentWeatherCard from './components/CurrentWeatherCard'
 import DateTime from './components/DateTime'
 import api from './services/api'
 
 const App = () => {
   const [weather, setWeather] = useState({})
+  const { latitude, longitude, error } = usePosition()
+
 
   useEffect(() => {
     api.get('data/2.5/onecall', {
