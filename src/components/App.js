@@ -36,6 +36,7 @@ const App = () => {
     })
     setWeather(response.data)
   }
+
   useEffect(() => {
     if (latitude && longitude && !error) {
       handleWeather(latitude, longitude)
@@ -43,6 +44,7 @@ const App = () => {
       handleWeather(51.507351, -0.127758)
     }
   }, [latitude, longitude, error])
+
   return (
     <div>
       <h1>Weather Forecast</h1>
@@ -53,7 +55,8 @@ const App = () => {
       />
       <button onClick={handleButtonClick}>Submit</button>
       <DateTime />
-      {Object.keys(weather).length === 0 ||
+      {Object.keys(weather).length === 0 ?
+        <p>Loading...</p> :
         <CurrentWeatherCard
           temperature={weather.current.temp}
           weather={weather.current.weather[0].description}
