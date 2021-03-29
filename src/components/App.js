@@ -9,52 +9,81 @@ import '../styles/App.css'
 
 const App = () => {
   const [weather, setWeather] = useState({})
-  const [location, setLocation] = useState('London')
   const { latitude, longitude, error } = usePosition()
-
-  const handleLocationChange = (newLocation) => setLocation(newLocation)
-
-  const handleLocation = () => {
-    geocodingApi.get('geocode/v1/json', {
-      params: {
-        q: location
-      }
-    }).then(response => {
-      const { lat, lng } = response.data.results[0].geometry
-      handleWeather(lat, lng)
-    })
-  }
-
-  const handleButtonClick = () => handleLocation()
-
-  const handleWeather = async (lat, lon) => {
-    const response = await weatherApi.get('data/2.5/onecall', {
-      params: {
-        lat,
-        lon,
-      }
-    })
-    setWeather(response.data)
-  }
 
   useEffect(() => {
     if (latitude && longitude && !error) {
-      handleWeather(latitude, longitude)
+      const newLocation = {
+        city: '',
+        latitude,
+        longitude,
+      }
+      setLocation(newLocation)
     } else {
-      handleWeather(51.507351, -0.127758)
+      console.log('error')
     }
   }, [latitude, longitude, error])
+
+  const [location, setLocation] = useState({})
+
+  useEffect(() => {
+
+    const handleWeather = async () => {
+      const response = await weatherApi.get('data/2.5/onecall', {
+        params: {
+          lat: location.latitude,
+          lon: location.longitude,
+        }
+      })
+      setWeather(response.data)
+    }
+
+    const getCityName = async () => {
+      const response = await geocodingApi.get('geocode/v1/json', {
+        params: {
+          q: `${location.latitude},${location.longitude}`
+        }
+      })
+
+
+      setLocation(
+        {
+          ...location,
+          city: response.data.results[0].components.city
+        })
+    }
+
+
+    if (location.latitude && location.longitude) {
+      getCityName()
+      handleWeather()
+    }
+
+  }, [location.latitude, location.longitude])
+
+  const handleLocationChange = (newCity) => {
+    geocodingApi.get('geocode/v1/json', {
+      params: {
+        q: newCity
+      }
+    }).then(response => {
+      const { lat, lng } = response.data.results[0].geometry
+      setLocation({
+        city: newCity,
+        latitude: lat,
+        longitude: lng
+      })
+    })
+  }
 
   return (
     <div>
       <h1>Weather Forecast</h1>
       <LocationInput
-        location={location}
         handleLocationChange={handleLocationChange}
-        handleButtonClick={handleButtonClick}
       />
-      <button onClick={handleButtonClick}>Submit</button>
       <DateTime />
+      <label>{location.city && `${location.city.toUpperCase()}`}</label>
       {Object.keys(weather).length === 0 ?
         <p>Loading...</p> :
         <CurrentWeatherCard
