@@ -45,7 +45,6 @@ const App = () => {
         }
       })
 
-
       setLocation(
         {
           ...location,
@@ -59,7 +58,7 @@ const App = () => {
       handleWeather()
     }
 
-  }, [location.latitude, location.longitude])
+  }, [location, location.latitude, location.longitude])
 
   const handleLocationChange = (newCity) => {
     geocodingApi.get('geocode/v1/json', {
