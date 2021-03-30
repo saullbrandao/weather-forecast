@@ -6,6 +6,7 @@ import LocationInput from './LocationInput'
 import geocodingApi from '../services/geocodingApi'
 import weatherApi from '../services/weatherApi'
 import '../styles/App.css'
+import WeatherCardList from './WeatherCardList'
 
 const App = () => {
   const [weather, setWeather] = useState({})
@@ -37,22 +38,18 @@ const App = () => {
       })
       setWeather(response.data)
     }
-
     const getCityName = async () => {
       const response = await geocodingApi.get('geocode/v1/json', {
         params: {
           q: `${location.latitude},${location.longitude}`
         }
       })
-
       setLocation(
         {
           ...location,
           city: response.data.results[0].components.city
         })
     }
-
-
     if (location.latitude && location.longitude) {
       getCityName()
       handleWeather()
@@ -78,9 +75,7 @@ const App = () => {
   return (
     <div>
       <h1>Weather Forecast</h1>
-      <LocationInput
-        handleLocationChange={handleLocationChange}
-      />
+      <LocationInput handleLocationChange={handleLocationChange} />
       <DateTime />
       <label>{location.city && `${location.city.toUpperCase()}`}</label>
       {Object.keys(weather).length === 0 ?
@@ -92,6 +87,7 @@ const App = () => {
           windSpeed={weather.current.wind_speed}
         />
       }
+      <WeatherCardList weather={weather} />
     </div>
   );
 }
