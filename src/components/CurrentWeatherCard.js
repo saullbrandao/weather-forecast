@@ -5,7 +5,7 @@ const CurrentWeatherCard = ({ temperature, weather, humidity, windSpeed }) => {
         <div className="container">
             <p id="temperature">{Math.floor(temperature)}<sup>°C</sup> </p>
             <p id="weather">{weather}</p>
-            <div id="humidity">
+            <div className="humidity">
                 <p className="grey-text">Humidity</p>
                 <p>{`${humidity}%`}</p>
             </div>

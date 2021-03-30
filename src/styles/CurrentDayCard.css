@@ -1,8 +1,3 @@
-* {
-    padding: 0;
-    margin: 0;
-}
-
 .container {
     display: grid;
     width: 200px;
@@ -24,7 +19,7 @@
     font-size: 20px;
 }
 
-#humidity {
+.humidity {
     grid-column: 1/2;
     display: grid;
     align-items: center;
