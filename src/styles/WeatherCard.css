@@ -1,0 +1,8 @@
+#weather-card {
+    display: grid;
+    width: 100px;
+    grid-template-rows: 80x 80px 80px;
+    align-items: center;
+    justify-items: center;
+    border: 1px solid;
+}
