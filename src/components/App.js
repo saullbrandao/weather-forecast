@@ -5,8 +5,8 @@ import DateTime from './DateTime'
 import LocationInput from './LocationInput'
 import geocodingApi from '../services/geocodingApi'
 import weatherApi from '../services/weatherApi'
-import '../styles/App.css'
 import WeatherCardList from './WeatherCardList'
+import "../styles/App.css"
 
 const App = () => {
   const [weather, setWeather] = useState({})
@@ -73,8 +73,8 @@ const App = () => {
   }
 
   return (
-    <div>
-      <h1>Weather Forecast</h1>
+    <div id="app">
+      <h1 id="header">Weather Forecast</h1>
       <LocationInput handleLocationChange={handleLocationChange} />
       <DateTime />
       <label>{location.city && `${location.city.toUpperCase()}`}</label>

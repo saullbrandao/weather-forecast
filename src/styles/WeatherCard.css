@@ -1,6 +1,6 @@
 #weather-card {
     display: grid;
-    width: 100px;
+    width: 120px;
     grid-template-rows: 80x 80px 80px;
     align-items: center;
     justify-items: center;

@@ -1,4 +1,5 @@
-* {
-    padding: 0;
-    margin: 0;
+#app {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
 }
