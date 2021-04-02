@@ -12,13 +12,28 @@ const App = () => {
   const { latitude, longitude, error } = usePosition()
 
   useEffect(() => {
+
+    const handleCityName = async () => {
+      const response = await geocodingApi.get('geocode/v1/json', {
+        params: {
+          q: `${latitude},${longitude}`
+        }
+      })
+      setLocation(location => {
+          return {...location, city: response.data.results[0].components.city}
+      })
+    }
+
     if (latitude && longitude && !error) {
-      const newLocation = {
-        city: '',
+      handleCityName()
+      
+      setLocation(location => {
+        return {
+        ...location,
         latitude,
         longitude,
-      }
-      setLocation(newLocation)
+        }
+      })
     } else {
       console.log('error')
     }
