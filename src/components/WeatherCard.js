@@ -3,7 +3,8 @@ import '../styles/WeatherCard.css'
 const WeatherCard = ({ dailyWeather, current }) => {
     if (dailyWeather) {
         const date = new Date(dailyWeather.dt * 1000)
-        const formatedDate = date.toDateString().slice(4, 10)
+        const formatedDate = date.toDateString().slice(0, 4)
+
         return (
             <div id="weather-card">
                 <h3>{current ? 'Today' : formatedDate}</h3>
@@ -15,9 +16,8 @@ const WeatherCard = ({ dailyWeather, current }) => {
             </div>
         )
     }
+
     return <p>Loading</p>
-
-
 }
 
 export default WeatherCard
