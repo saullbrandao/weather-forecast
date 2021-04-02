@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const LocationInput = ({ handleLocationChange }) => {
     const [inputValue, setInputValue] = useState('')
+    
     useEffect(() => {
         const inputTimer = setTimeout(() => {
             if (inputValue) {
@@ -14,10 +15,10 @@ const LocationInput = ({ handleLocationChange }) => {
 
     return (
         <div>
-            Your City <input type="text"
+            <input type="text"
                 onChange={(event) => setInputValue(event.target.value)}
                 value={inputValue}
-                placeholder={inputValue}
+                placeholder="Enter City Name"
             />
         </div>
     )
