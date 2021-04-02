@@ -41,8 +41,9 @@ const App = () => {
 
   const [location, setLocation] = useState({})
 
-  useEffect(() => {
-
+  
+  
+  useEffect(() => {    
     const handleWeather = async () => {
       const response = await weatherApi.get('data/2.5/onecall', {
         params: {
@@ -50,26 +51,14 @@ const App = () => {
           lon: location.longitude,
         }
       })
+      console.log('weather api call')
       setWeather(response.data)
     }
-    const getCityName = async () => {
-      const response = await geocodingApi.get('geocode/v1/json', {
-        params: {
-          q: `${location.latitude},${location.longitude}`
-        }
-      })
-      setLocation(
-        {
-          ...location,
-          city: response.data.results[0].components.city
-        })
-    }
     if (location.latitude && location.longitude) {
-      getCityName()
       handleWeather()
     }
 
-  }, [location, location.latitude, location.longitude])
+  }, [location.latitude, location.longitude])
 
   const handleLocationChange = (newCity) => {
     geocodingApi.get('geocode/v1/json', {
