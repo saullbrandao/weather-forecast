@@ -7,9 +7,24 @@ import WeatherCardList from './WeatherCardList'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  display: grid;
-    justify-content: center;
+    display: grid;
     justify-items: center;
+    padding: 1rem;
+    background-color: #0C2D48;
+    color: #fdfdfd;
+    gap: 2rem;
+    height: 95.2%;
+    /* overflow: hidden; */
+`
+
+const Header = styled.h1`
+  font-size: 4rem;
+  color: #B1D4E0;
+`
+const City = styled.h2`
+  font-size: 2rem;
+  margin: 0;
+
 `
 
 const App = () => {
@@ -83,7 +98,7 @@ const App = () => {
 
   return (
     <Container id="app">
-      <h1 id="header">Weather Forecast</h1>
+      <Header>Weather Forecast</Header>
       <LocationInput handleLocationChange={handleLocationChange} />
       <City>{location.city && `${location.city.toUpperCase()}`}</City>
       <WeatherCardList weather={weather} />
