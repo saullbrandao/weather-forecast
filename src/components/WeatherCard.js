@@ -57,7 +57,7 @@ const WeatherCard = ({ dailyWeather, current }) => {
 
                     <img src={iconURL} />
                     <Humidity>
-                        <p>Humidity {`${dailyWeather.humidity}%`}</p>
+                        Humidity {`${dailyWeather.humidity}%`}
                     </Humidity>
                 </Card>
         )
