@@ -5,7 +5,13 @@ import LocationInput from './LocationInput'
 import geocodingApi from '../services/geocodingApi'
 import weatherApi from '../services/weatherApi'
 import WeatherCardList from './WeatherCardList'
-import "../styles/App.css"
+import styled from 'styled-components'
+
+const Container = styled.div`
+  display: grid;
+    justify-content: center;
+    justify-items: center;
+`
 
 const App = () => {
   const [weather, setWeather] = useState({})
@@ -20,18 +26,18 @@ const App = () => {
         }
       })
       setLocation(location => {
-          return {...location, city: response.data.results[0].components.city}
+        return { ...location, city: response.data.results[0].components.city }
       })
     }
 
     if (latitude && longitude && !error) {
       handleCityName()
-      
+
       setLocation(location => {
         return {
-        ...location,
-        latitude,
-        longitude,
+          ...location,
+          latitude,
+          longitude,
         }
       })
     } else {
@@ -41,9 +47,9 @@ const App = () => {
 
   const [location, setLocation] = useState({})
 
-  
-  
-  useEffect(() => {    
+
+
+  useEffect(() => {
     const handleWeather = async () => {
       const response = await weatherApi.get('data/2.5/onecall', {
         params: {
@@ -52,6 +58,7 @@ const App = () => {
         }
       })
       console.log('weather api call')
+      console.log(response.data)
       setWeather(response.data)
     }
     if (location.latitude && location.longitude) {
@@ -76,7 +83,7 @@ const App = () => {
   }
 
   return (
-    <div id="app">
+    <Container id="app">
       <h1 id="header">Weather Forecast</h1>
       <LocationInput handleLocationChange={handleLocationChange} />
       <label>{location.city && `${location.city.toUpperCase()}`}</label>
@@ -90,7 +97,7 @@ const App = () => {
         />
       }
       <WeatherCardList weather={weather} />
-    </div>
+    </Container>
   );
 }
 
