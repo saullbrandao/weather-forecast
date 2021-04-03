@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { usePosition } from 'use-position'
-import CurrentWeatherCard from './CurrentWeatherCard'
 import LocationInput from './LocationInput'
 import geocodingApi from '../services/geocodingApi'
 import weatherApi from '../services/weatherApi'
@@ -86,16 +85,7 @@ const App = () => {
     <Container id="app">
       <h1 id="header">Weather Forecast</h1>
       <LocationInput handleLocationChange={handleLocationChange} />
-      <label>{location.city && `${location.city.toUpperCase()}`}</label>
-      {Object.keys(weather).length === 0 ?
-        <p>Loading...</p> :
-        <CurrentWeatherCard
-          temperature={weather.current.temp}
-          weather={weather.current.weather[0].description}
-          humidity={weather.current.humidity}
-          windSpeed={weather.current.wind_speed}
-        />
-      }
+      <City>{location.city && `${location.city.toUpperCase()}`}</City>
       <WeatherCardList weather={weather} />
     </Container>
   );
