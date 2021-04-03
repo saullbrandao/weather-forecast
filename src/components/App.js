@@ -71,8 +71,6 @@ const App = () => {
           lon: location.longitude,
         }
       })
-      console.log('weather api call')
-      console.log(response.data)
       setWeather(response.data)
     }
     if (location.latitude && location.longitude) {
