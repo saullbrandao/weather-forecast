@@ -22,7 +22,7 @@ const Header = styled.h1`
   color: #B1D4E0;
 `
 const City = styled.h2`
-  font-size: 2rem;
+  font-size: 3rem;
   margin: 0;
 
 `
