@@ -18,7 +18,7 @@ const TextInput = styled.input`
 
 const LocationInput = ({ handleLocationChange }) => {
     const handleKeyPress = event => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && event.target.value) {
             handleLocationChange(event.target.value)
             event.target.value = ''
         }
