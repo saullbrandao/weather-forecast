@@ -6,7 +6,15 @@ const TextInput = styled.input`
     padding: 0.5rem;
     text-align: center;
     font-size: 1rem;
-    border-radius: 4px;
+    border-radius: 1rem;
+    border: 2px solid #2E8BC0;
+
+    :focus {
+        outline: none;
+        ::placeholder {
+            color: transparent
+        }
+    }
 `
 
 const LocationInput = ({ handleLocationChange }) => {
