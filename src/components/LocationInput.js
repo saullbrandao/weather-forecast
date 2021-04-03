@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const TextInput = styled.input`
@@ -18,22 +17,16 @@ const TextInput = styled.input`
 `
 
 const LocationInput = ({ handleLocationChange }) => {
-    const [inputValue, setInputValue] = useState('')
-
-    useEffect(() => {
-        const inputTimer = setTimeout(() => {
-            if (inputValue) {
-                handleLocationChange(inputValue)
-                setInputValue('')
-            }
-        }, 1000)
-        return () => clearTimeout(inputTimer)
-    }, [inputValue, handleLocationChange])
+    const handleKeyPress = event => {
+        if (event.key === 'Enter') {
+            handleLocationChange(event.target.value)
+            event.target.value = ''
+        }
+    }
 
     return (
         <TextInput type="text"
-            onChange={(event) => setInputValue(event.target.value)}
-            value={inputValue}
+            onKeyPress={handleKeyPress}
             placeholder="Enter City Name"
         />
     )
