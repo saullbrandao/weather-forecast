@@ -6,6 +6,8 @@ import weatherApi from '../services/weatherApi'
 import WeatherCardList from './WeatherCardList'
 import GlobalStyle from '../styles/globals'
 import styled from 'styled-components'
+import Header from './Header'
+import CityName from './CityName'
 
 const Container = styled.div`
     display: flex;
@@ -98,7 +100,7 @@ const App = () => {
     <Container id="app">
       <Header>Weather Forecast</Header>
       <LocationInput handleLocationChange={handleLocationChange} />
-      <City>{location.city && `${location.city.toUpperCase()}`}</City>
+      <CityName>{location.city && `${location.city.toUpperCase()}`}</CityName>
       <WeatherCardList weather={weather} />
       <GlobalStyle />
     </Container>
