@@ -23,7 +23,7 @@ const WeatherCardList = ({ weather }) => {
         <CardList>
             {weather.daily ? weather.daily.map((day, index) => {
                 return index < 7 ? <WeatherCard key={index} dailyWeather={index === 0 ? weather.current : day} current={index === 0 ? true : false} /> : null
-            }) : <p>Loading</p>}
+            }) : null}
         </CardList>
     )
 }
