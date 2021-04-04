@@ -9,23 +9,22 @@ import styled from 'styled-components'
 
 const Container = styled.div`
     display: grid;
-    justify-items: center;
     padding: 1rem;
     background-color: #0C2D48;
     color: #fdfdfd;
     gap: 2rem;
-    height: 95.2%;
-    /* overflow: hidden; */
+    /* justify-items: center; */
+    
 `
 
 const Header = styled.h1`
-  font-size: 4rem;
-  color: #B1D4E0;
+  font-size: 3rem;
+  text-align: center;
 `
 const City = styled.h2`
-  font-size: 3rem;
+  text-align: center;
+  font-size: 2rem;
   margin: 0;
-
 `
 
 const App = () => {

@@ -4,7 +4,18 @@ import styled from 'styled-components'
 const CardList = styled.div`
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+    gap: 0.5em;
+    
+    
+
+    @media(max-width: 970px) {
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: 0.1px;
+    }
 `
 
 const WeatherCardList = ({ weather }) => {

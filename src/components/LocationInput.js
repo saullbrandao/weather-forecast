@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 const TextInput = styled.input`
-    width: 30rem;
-    padding: 0.5rem;
+    display: flex;
+    justify-self: center;
+    width: 45em;
+    padding: 0.5em;
     text-align: center;
-    font-size: 1rem;
-    border-radius: 1rem;
+    font-size: 1em;
+    border-radius: 1em;
     border: 2px solid #2E8BC0;
 
     :focus {
@@ -13,6 +15,14 @@ const TextInput = styled.input`
         ::placeholder {
             color: transparent
         }
+    }
+
+    @media(max-width: 970px) {
+        width: 100%;
+    }
+
+    @media(max-width: 530px) {
+        width: 100%;
     }
 `
 
