@@ -51,6 +51,10 @@ const Humidity = styled.p`
     }
 `
 
+const WeekDay = styled.h3`
+
+`
+
 
 const WeatherCard = ({ dailyWeather, current }) => {
     const iconURL = `https://openweathermap.org/img/w/${dailyWeather.weather[0].icon}.png`
@@ -60,7 +64,7 @@ const WeatherCard = ({ dailyWeather, current }) => {
         const formatedDate = date.toDateString().slice(0, 4)
         return (
             current ? <CurrentDayCard>
-                <h3>Today</h3>
+                <WeekDay>Today</WeekDay>
                 <Temperature>{Math.floor(dailyWeather.temp)}<sup>°C</sup> </Temperature>
                 <Icon src={iconURL} />
                 <Humidity>
@@ -69,7 +73,7 @@ const WeatherCard = ({ dailyWeather, current }) => {
 
             </CurrentDayCard>
                 : <Card>
-                    <h3>{formatedDate}</h3>
+                    <WeekDay>{formatedDate}</WeekDay>
                     <Temperature>{Math.floor(dailyWeather.temp.day)}<sup>°C</sup> </Temperature>
 
                     <Icon src={iconURL} />
