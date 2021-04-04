@@ -24,7 +24,7 @@ const Header = styled.h1`
 const City = styled.h2`
   text-align: center;
   font-size: 2rem;
-  margin: 0;
+  margin-top: 2em;
 `
 
 const App = () => {

@@ -7,9 +7,8 @@ const CardList = styled.div`
     justify-content: center;
     width: 100%;
     gap: 0.5em;
+    margin-top: 3em;
     
-    
-
     @media(max-width: 970px) {
         flex-direction: column;
         justify-content: start;
