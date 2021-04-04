@@ -8,13 +8,13 @@ import GlobalStyle from '../styles/globals'
 import styled from 'styled-components'
 
 const Container = styled.div`
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 1rem;
-    background-color: #0C2D48;
     color: #fdfdfd;
     gap: 2rem;
-    /* justify-items: center; */
-    
+    height: 100%;
 `
 
 const Header = styled.h1`
