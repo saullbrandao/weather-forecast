@@ -13,22 +13,15 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: 1em;
     color: #fdfdfd;
-    gap: 2rem;
+    gap: 5em;
     height: 100%;
-`
 
-const Header = styled.h1`
-  font-size: 3rem;
-  text-align: center;
+    @media(max-width: 970px) {
+        gap: 3em;
+    }
 `
-const City = styled.h2`
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 2em;
-`
-
 const App = () => {
   const [weather, setWeather] = useState({})
   const { latitude, longitude, error } = usePosition()

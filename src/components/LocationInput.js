@@ -9,7 +9,6 @@ const TextInput = styled.input`
     font-size: 1em;
     border-radius: 1em;
     border: 2px solid #2E8BC0;
-    margin-top: 3em;
 
     :focus {
         outline: none;
