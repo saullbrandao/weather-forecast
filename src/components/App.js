@@ -4,6 +4,7 @@ import LocationInput from './LocationInput'
 import geocodingApi from '../services/geocodingApi'
 import weatherApi from '../services/weatherApi'
 import WeatherCardList from './WeatherCardList'
+import GlobalStyle from '../styles/globals'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -100,6 +101,7 @@ const App = () => {
       <LocationInput handleLocationChange={handleLocationChange} />
       <City>{location.city && `${location.city.toUpperCase()}`}</City>
       <WeatherCardList weather={weather} />
+      <GlobalStyle />
     </Container>
   );
 }
