@@ -1,7 +1,7 @@
 # Weather Forecast App
 App built with react that shows the weather information based on your location or the city you specify.
 
-![weather-app](https://github.com/saullbrandao/weather-forecast/weather-app.jpg "Weather App")
+![weather-app](https://raw.githubusercontent.com/saullbrandao/weather-forecast/main/weather-app.jpg "Weather App")
 
 ## Technologies
 - [React](https://github.com/facebook/react)
