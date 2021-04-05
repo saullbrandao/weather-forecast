@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const weatherApi = axios.create({
-    baseURL: 'http://api.openweathermap.org',
+    baseURL: 'https://api.openweathermap.org',
     params: {
         units: 'metric',
         exclude: 'minutely,hourly,alerts',
