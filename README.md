@@ -1,5 +1,7 @@
 # Weather Forecast App
+App built with react that shows the weather information based on your location or the city you specify.
 
+![weather-app](https://github.com/saullbrandao/weather-forecast/weather-app.jpg "Weather App")
 
 ## Technologies
 - [React](https://github.com/facebook/react)
@@ -7,7 +9,7 @@
 - [Axios](https://github.com/axios/axios)
 - [usePosition](https://github.com/trekhleb/use-position) 
 
-## How to run
+## Setup Instructions
 - You will need [Node.js](https://nodejs.org/) instaled
 - I used [yarn](https://yarnpkg.com/getting-started/install) but you can use npm instead if you prefer
 
