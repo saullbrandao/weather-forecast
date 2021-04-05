@@ -31,6 +31,7 @@ const LocationInput = ({ handleLocationChange }) => {
         if (event.key === 'Enter' && event.target.value) {
             handleLocationChange(event.target.value)
             event.target.value = ''
+            event.target.blur()
         }
     }
 
